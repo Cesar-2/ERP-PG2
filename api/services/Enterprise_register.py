@@ -6,7 +6,7 @@ from ..models.enterprise.module import Module
 
 class EnterpriseModules:
     def __init__(self, enterprise, modules=None):
-        """ Initializes class with an enterprise and an optional list of pk profiles.
+        """ Initializes class with an enterprise and an optional list of pk modules.
 
         Parameters:
             enterprise (Enterprise):enterprise model instance.
@@ -17,8 +17,8 @@ class EnterpriseModules:
         self.enterprise = enterprise
         self.modules = modules if modules else None
 
-    def add_profile(self, module):
-        """ Add the default 'cliente' module to an user.
+    def add_module(self, module):
+        """ Add the module to an enterprise.
 
         Returns:
             enterprise (Enterprise):enterprise instance with module within its ManyToMany

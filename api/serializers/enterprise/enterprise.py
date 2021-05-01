@@ -9,7 +9,6 @@ from ...models.enterprise.module import Module
 from ...serializers.enterprise.module import ModuleSerializer
 from ...services.Enterprise_register import EnterpriseModules
 
-
 USER = get_user_model()
 
 
@@ -32,7 +31,7 @@ class EnterpriseSerializer(serializers.ModelSerializer):
         ]
         extra_kwargs = {'password': {'write_only': True}}
 
-    def create(self, validated_data, modules):
+    def create(self, validated_data):
         """ Creates an entreprise object with its password and relate it with
             its modules.
 
@@ -44,7 +43,6 @@ class EnterpriseSerializer(serializers.ModelSerializer):
             enterprise (Enterprise): A fields-full custom django enterprise.
 
         """
-
         aux = copy.deepcopy(validated_data)
 
         aux['username'] = aux['email'].lower()
@@ -52,8 +50,8 @@ class EnterpriseSerializer(serializers.ModelSerializer):
         aux['password'] = make_password(validated_data['password'])
 
         enterprise = USER.objects.create(**aux)
-        for module in modules:
-            enterprise = (enterprise).add_profile(module)
+        for module in aux['module']:
+            enterprise = enterprise.add_module(module)
         enterprise.save()
 
         return enterprise
