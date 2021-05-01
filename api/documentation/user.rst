@@ -5,69 +5,75 @@
 Recurso POST
 ------------
 
-.. http:post:: /api/v1/enterprises
+    .. http:post:: /api/v1/enterprises
 
-Crea una empresa en la plataforma
+    Crea una empresa en la plataforma
 
-**Campos Obligatorios**
+    * **Campos Obligatorios**
 
-:name: **(string)** Nombre de la empresa
-:nit: **(string)** Nit de la empresa
-:email: **(string)** Correo de la empresa
-:password: **(string)** Contraseña de la empresa. Tamaño mínimo de 7 caracteres
-:state: **(string)** Departamento. Solo se permiten los valores que se consultan en el recurso GET /country
-:city: **(string)** Ciudad
-:address: **(string)** Direccion. Se permite una string que contenga la direccion de residencia
+        :name: **(string)** Nombre de la empresa
+        :nit: **(string)** Nit de la empresa
+        :email: **(string)** Correo de la empresa
+        :password: **(string)** Contraseña de la empresa. Tamaño mínimo de 7 caracteres
+        :state: **(string)** Departamento. Solo se permiten los valores que se consultan en el recurso GET /country
+        :city: **(string)** Ciudad
+        :address: **(string)** Direccion. Se permite una string que contenga la direccion de residencia
+        :module: **(list)** Modulos que tiene la empresa comprados de nuestro servicio
+        
+    * **Formatos**
 
-**Ejemplo de petición**
+        - module: ME, MI, MN, MV
 
-.. sourcecode:: http
+    * **Ejemplo de petición**
 
-    POST /api/v1/enterprises HTTP/1.1
-    Content-Type: application/json
+        .. sourcecode:: http
 
-    {
-        "name": "",
-        "nit":"1234567894",
-        "email": "micorreo@correo.com",
-        "password": "MiContraseña!*",
-        "state":"Risaralda",
-        "city": "Pereira",
-        "address": "Calle 80 #32 - 29"
-    }
+            POST /api/v1/enterprises HTTP/1.1
+            Content-Type: application/json
 
-**Ejemplos de respuesta**
+            {
+                "name": "Cuarentino",
+                "nit": "1234567894",
+                "email": "micorreo@correo.com",
+                "password": "MiContraseña!*",
+                "state": "Risaralda",
+                "city": "Pereira",
+                "address": "Calle 80 #32 - 29",
+                "module": [""]
+            }
 
-.. sourcecode:: http
+    * **Ejemplos de respuesta**
 
-    HTTP/1.1 201 CREATED
-    {
-        "inserted":1
-    }
+        .. sourcecode:: http
 
-.. sourcecode:: http
+            HTTP/1.1 201 CREATED
+            {
+                "inserted":1
+            }
 
-    HTTP/1.1 400 BAD_REQUEST
-    Content-Type: application/json
+        .. sourcecode:: http
 
-    {
-        "code": "invalid_body",
-        "detail": "Cuerpo con estructura inválida",
-        "data": {
-            "gender": [
-                "Este campo es requerido."
-             ]
-        }
-    }
+            HTTP/1.1 400 BAD_REQUEST
+            Content-Type: application/json
 
-.. sourcecode:: http
+            {
+                "code": "invalid_body",
+                "detail": "Cuerpo con estructura inválida",
+                "data": {
+                    "gender": [
+                        "Este campo es requerido."
+                    ]
+                }
+            }
 
-    HTTP/1.1 409 CONFLICT
-    {
-        "code": "user_already_exist",
-        "detailed": "El usuario ya existe en la base de datos"
-    }
+        .. sourcecode:: http
 
-:status 201: Empresa creada creado
-:status 400: Cuerpo con estructura inválida
-:status 409: La empresa ya existe
+            HTTP/1.1 409 CONFLICT
+            {
+                "code": "user_already_exist",
+                "detailed": "El usuario ya existe en la base de datos"
+            }
+
+    :status 201: Empresa creada creado
+    :status 400: Cuerpo con estructura inválida
+    :status 409: La empresa ya existe
