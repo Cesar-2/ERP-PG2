@@ -173,3 +173,5 @@ AUTH_USER_MODEL = "api.Enterprise"
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 django_heroku.settings(locals())
+TOKEN_EXP_DAYS = 1
+KEEP_LOGGED_IN_TOKEN_EXP_DAYS = 1

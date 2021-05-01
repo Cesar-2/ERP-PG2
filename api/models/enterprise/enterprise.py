@@ -12,7 +12,7 @@ class Enterprise(AbstractUser):
 
     creation_date = models.DateTimeField(auto_now_add=True)
     nit = models.CharField("Nit de la empresa", max_length=255, unique=True)
-    name = models.CharField("Primer Nombre", max_length=255)
+    name = models.CharField("Nombre", max_length=255)
     state = models.CharField("Departamento", max_length=100, blank=True)
     city = models.CharField("Ciudad", max_length=100, blank=True)
     address = models.CharField("Direccion", max_length=100, blank=True)
@@ -26,4 +26,4 @@ class Enterprise(AbstractUser):
         verbose_name_plural = "Empresas"
 
     def __str__(self):
-        return '{} - {}'.format(self.pk, self.nit, self.email)
+        return '{} - {} {}'.format(self.pk, self.email, self.nit)
