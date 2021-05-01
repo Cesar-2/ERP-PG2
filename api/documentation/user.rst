@@ -15,7 +15,7 @@ Recurso POST
         :nit: **(string)** Nit de la empresa
         :email: **(string)** Correo de la empresa
         :password: **(string)** Contraseña de la empresa. Tamaño mínimo de 7 caracteres
-        :state: **(string)** Departamento.
+        :state: **(string)** Departamento
         :city: **(string)** Ciudad
         :address: **(string)** Direccion. Se permite una string que contenga la direccion de residencia
         :module: **(list)** Modulos que tiene la empresa comprados de nuestro servicio
