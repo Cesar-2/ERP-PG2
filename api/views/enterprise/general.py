@@ -12,7 +12,8 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 
-from ...helpers.modules_names import ME, MI, MN, MV
+from ...helpers.modules_names import (
+    ASSESSMENT_MODULE, PAYROLL_MODULE, EMPLOYER_MODULE, REPORT_MODULE)
 from ...helpers.token import TokenHandler
 from ...helpers.paginator import paginate_content
 from ...serializers.enterprise import EnterpriseSerializer
@@ -45,7 +46,7 @@ class EnterpriseApi(APIView, TokenHandler):
             "state": {"required": True, "type": "string"},
             "city": {"required": True, "type": "string"},
             "password": {"required": True, "type": "string", "minlength": 7},
-            "module": {"required": True, "type": "list", "allowed": [MN, ME, MI, MV]},
+            "module": {"required": True, "type": "list", "allowed": [ASSESSMENT_MODULE, PAYROLL_MODULE, EMPLOYER_MODULE, REPORT_MODULE]},
         })
         if not validator.validate(request.data):
             return Response({

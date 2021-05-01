@@ -22,7 +22,7 @@ Recurso POST
         
     * **Formatos**
 
-        - module: ME, MI, MN, MV
+        - module: EM, RM, PM, AM
 
     * **Ejemplo de petición**
 

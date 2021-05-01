@@ -1,4 +1,4 @@
-ME = "Modulo de empleados"
-MV = "Modulo de valoracion"
-MN = "Modulo de nomina"
-MI = "Modulo de informes"
+EMPLOYER_MODULE = "EM"
+ASSESSMENT_MODULE = "AM"
+PAYROLL_MODULE = "PM"
+REPORT_MODULE = "RM"
