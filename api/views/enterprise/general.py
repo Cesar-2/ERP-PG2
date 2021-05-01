@@ -46,7 +46,9 @@ class EnterpriseApi(APIView, TokenHandler):
             "state": {"required": True, "type": "string"},
             "city": {"required": True, "type": "string"},
             "password": {"required": True, "type": "string", "minlength": 7},
-            "module": {"required": True, "type": "list", "allowed": [ASSESSMENT_MODULE, PAYROLL_MODULE, EMPLOYER_MODULE, REPORT_MODULE]},
+            "module": {
+                "required": True, "type": "list", "allowed": [
+                    ASSESSMENT_MODULE, PAYROLL_MODULE, EMPLOYER_MODULE, REPORT_MODULE]},
         })
         if not validator.validate(request.data):
             return Response({
