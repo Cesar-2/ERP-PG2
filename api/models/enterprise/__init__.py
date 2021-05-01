@@ -1,3 +1,3 @@
-from .enterprise import User
+from .enterprise import Enterprise
 from .auth import Auth
 from .module import Module

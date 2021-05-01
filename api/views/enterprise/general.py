@@ -18,10 +18,10 @@ from ...serializers.enterprise import EnterpriseSerializer
 
 
 class EnterpriseApi(APIView, TokenHandler):
-    """ Defines the HTTP verbs to user model management. """
+    """ Defines the HTTP verbs to enterprise model management. """
 
     def post(self, request):
-        """ Retrieves all users instances.
+        """ Retrieves all enterprises instances.
 
         Parameters
         ----------
@@ -37,7 +37,6 @@ class EnterpriseApi(APIView, TokenHandler):
         """
         def to_date(s): return datetime.strptime(s, '%Y-%m-%d')
         validator = Validator({
-            "birthdate": {"required": True, "type": "date", "coerce": to_date},
             "nit": {"required": True, "type": "string"},
             "name": {"required": True, "type": "string"},
             "email": {"required": True, "type": "string"},
