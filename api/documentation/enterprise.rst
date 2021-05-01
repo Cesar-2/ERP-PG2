@@ -74,6 +74,6 @@ Recurso POST
                 "detailed": "El usuario ya existe en la base de datos"
             }
 
-    :status 201: Empresa creada creado
+    :status 201: Empresa creado
     :status 400: Cuerpo con estructura inválida
     :status 409: La empresa ya existe

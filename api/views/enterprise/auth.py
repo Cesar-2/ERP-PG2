@@ -72,7 +72,7 @@ class AuthApi(APIView):
                 )
             ),
             'email': request.data["email"],
-            'modules': [val.module for val in enterprise.module.all()],
+            'modules': [val.names for val in enterprise.module.all()],
             'refresh': refresh
         }, settings.SECRET_KEY, algorithm='HS256')
 
@@ -85,5 +85,5 @@ class AuthApi(APIView):
             "token": token,
             "refresh": refresh,
             "name": enterprise.name,
-            "modules": [val.module for val in enterprise.module.all()]
+            "modules": [val.names for val in enterprise.module.all()]
         }, status=status.HTTP_201_CREATED)
