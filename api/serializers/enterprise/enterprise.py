@@ -21,7 +21,7 @@ class EnterpriseSerializer(serializers.ModelSerializer):
     nit = serializers.CharField(
         validators=[UniqueValidator(queryset=USER.objects.all())])
 
-    class Meta:  # pylint: disable=too-few-public-methods
+    class Meta:
         """ Defines serializer fields that are being used """
 
         model = USER

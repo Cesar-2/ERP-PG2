@@ -4,7 +4,6 @@ from api.models.enterprise.enterprise import Enterprise
 from cerberus import Validator
 from datetime import datetime
 
-from django.contrib.auth.hashers import make_password
 from django.db.models import Q
 from django.utils import timezone
 
@@ -23,7 +22,7 @@ class EnterpriseApi(APIView, TokenHandler):
     """ Defines the HTTP verbs to enterprise model management. """
 
     def post(self, request):
-        """ Retrieves all enterprises instances.
+        """ Create enterprise instance.
 
         Parameters
         ----------
@@ -37,7 +36,6 @@ class EnterpriseApi(APIView, TokenHandler):
                 Body response and status code.
 
         """
-        def to_date(s): return datetime.strptime(s, '%Y-%m-%d')
         validator = Validator({
             "nit": {"required": True, "type": "string"},
             "name": {"required": True, "type": "string"},

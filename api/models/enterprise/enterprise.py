@@ -26,4 +26,4 @@ class Enterprise(AbstractUser):
         verbose_name_plural = "Empresas"
 
     def __str__(self):
-        return '{} - {} {}'.format(self.pk, self.email, self.nit)
+        return f'{self.pk} - {self.email} {self.nit}'
