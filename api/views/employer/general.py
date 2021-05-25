@@ -1,6 +1,6 @@
 """ Contains Employer endpoint definition """
 
-from api.serializers.employer.employer import EmployerSerializer
+from ...serializers.employer import EmployerSerializer
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
@@ -9,9 +9,11 @@ from ...models.employer import Employer
 from ...models.enterprise import Enterprise
 from cerberus import Validator
 from datetime import datetime
+from ...helpers.token import TokenHandler
+from ...helpers.modules_names import PAYROLL_MODULE
 
 
-class EmployerApi(APIview):
+class EmployerApi(APIView, TokenHandler):
     """ Defines the HTTP verbs to employer model management. """
 
     def post(self, request):
@@ -44,7 +46,6 @@ class EmployerApi(APIview):
             "state": {"required": True, "type": "string"},
             "city": {"required": True, "type": "string"},
             "eps": {"required": True, "type": "string"},
-            "enterprise": {"required": True, "type": "integer"},
             "password": {"required": True, "type": "string", "minlength": 7},
         })
         if not validator.validate(request.data):
@@ -53,13 +54,19 @@ class EmployerApi(APIview):
                 "detailed": "Parámetros de búsqueda inválidos",
                 "data": validator.errors
             }, status=status.HTTP_400_BAD_REQUEST)
-
-        enterprise = Enterprise.objects.filter(pk=request.data["enterprise"])
-        if not enterprise:
+        payload, enterprise = self.get_payload(request)
+        if not payload:
             return Response({
-                "code": "enterprise_does_not_exist",
-                "detailed": "La empresa no existe en la base de datos"
-            }, status=status.HTTP_409_CONFLICT)
+                "code": "unauthorized",
+                "detailed": "El token es incorrecto o expiro"
+            }, status=status.HTTP_401_UNAUTHORIZED)
+
+        if not self.has_permissions([PAYROLL_MODULE], enterprise):
+            return Response({
+                "code": "invalid_request",
+                "detailed": "No tiene los permisos necesarios"
+            }, status=status.HTTP_403_FORBIDDEN)
+
         # request.data["enterprise"] = enterprise
         serializer = EmployerSerializer(data=request.data)
         if not serializer.is_valid():

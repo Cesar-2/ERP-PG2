@@ -16,7 +16,8 @@ class Enterprise(AbstractUser):
     state = models.CharField("Departamento", max_length=100, blank=True)
     city = models.CharField("Ciudad", max_length=100, blank=True)
     address = models.CharField("Direccion", max_length=100, blank=True)
-    module = models.ManyToManyField(Module, related_name='enterprise_module')
+    module = models.ManyToManyField(
+        Module, blank=True, related_name='enterprise_module')
 
     REQUIRED_FIELDS = ['email']
 

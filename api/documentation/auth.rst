@@ -32,6 +32,15 @@ Recurso POST
         .. sourcecode:: http
 
             HTTP/1.1 201 CREATED
+            
+            {
+                "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHBpcmF0aW9uX2RhdGUiOiIyMDIxLTA1LTI1IDE5OjQ5OjQxLjAxOTQxMCIsImVtYWlsIjoiYWRtaW5AYWRtaW4uY29tIiwibW9kdWxlcyI6WyJOb21pbmEiLCJJbmZvcm1lcyIsIlZhbG9yYWNpb24iLCJFbXBsZWFkb3MiXSwicmVmcmVzaCI6ImY1WTN1N1daM1RlNDZsdEZINVNIY21yS2ZIdTl0YyJ9.C0Nv1J5wghUd8fUAoYGGT6sIyhIo19F0qVd-6tY2hu4",
+                "refresh": "f5Y3u7WZ3Te46ltFH5SHcmrKfHu9tc",
+                "name": "Lolero",
+                "modules": [
+                    "Nomina"
+                ]
+            }
 
         .. sourcecode:: http
 

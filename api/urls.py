@@ -15,12 +15,13 @@ Including another URLconf
 """
 from django.urls import path
 
-from .views.enterprise import AuthApi
-from .views.enterprise import EnterpriseApi
+from .views.enterprise import AuthApi, EnterpriseApi
+from .views.employer import EmployerApi
 
 app_name = 'api'
 
 urlpatterns = [
     path('auth', AuthApi.as_view()),
-    path('enterprises', EnterpriseApi.as_view()),
+    path('employer', EmployerApi.as_view()),
+    path('enterprise', EnterpriseApi.as_view()),
 ]

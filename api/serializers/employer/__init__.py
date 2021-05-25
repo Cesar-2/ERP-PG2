@@ -1,1 +1,1 @@
-from .employer import EmployerSerializer, BasicInfoEmployerSerializer
+from .employer import EmployerSerializer

@@ -5,7 +5,7 @@
 Recurso POST
 ------------
 
-    .. http:post:: /api/v1/enterprises
+    .. http:post:: /api/v1/enterprise
 
     Crea una empresa en la plataforma
 
@@ -28,7 +28,7 @@ Recurso POST
 
         .. sourcecode:: http
 
-            POST /api/v1/enterprises HTTP/1.1
+            POST /api/v1/enterprise HTTP/1.1
             Content-Type: application/json
 
             {

@@ -44,14 +44,14 @@ class EnterpriseSerializer(serializers.ModelSerializer):
 
         """
         aux = copy.deepcopy(validated_data)
-
         aux['username'] = aux['email'].lower()
         aux['email'] = aux['email'].lower()
         aux['password'] = make_password(validated_data['password'])
-
+        modules = aux['module'].copy()
+        aux.pop('module')
         enterprise = USER.objects.create(**aux)
-        for module in aux['module']:
-            enterprise = enterprise.add_module(module)
+        for module in modules:
+            enterprise = EnterpriseModules(enterprise).add_module(module)
         enterprise.save()
 
         return enterprise
