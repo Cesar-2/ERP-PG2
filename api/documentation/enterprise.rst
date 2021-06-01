@@ -39,7 +39,7 @@ Recurso POST
                 "state": "Risaralda",
                 "city": "Pereira",
                 "address": "Calle 80 #32 - 29",
-                "module": [""]
+                "module": []
             }
 
     * **Ejemplos de respuesta**

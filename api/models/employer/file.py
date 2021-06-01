@@ -12,4 +12,4 @@ class File(models.Model):
     files = models.BinaryField("Archivo")
 
     def __str__(self):
-        return self.pk
+        return f"{self.pk} - {self.document_name}"

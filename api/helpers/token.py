@@ -6,7 +6,6 @@ from django.conf import settings
 
 from ..models.enterprise.auth import Auth
 from ..models.enterprise import Enterprise
-from api.models import enterprise
 
 
 class TokenHandler:
@@ -78,4 +77,4 @@ class TokenHandler:
         return token_email == request_child
 
     def has_permissions(self, modules, enterprise):
-        return enterprise.profile.filter(profile__in=modules).exists()
+        return enterprise.module.filter(names__in=modules).exists()

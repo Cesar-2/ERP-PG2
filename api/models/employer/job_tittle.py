@@ -7,8 +7,8 @@ from ..enterprise import Enterprise
 
 class JobTittle(models.Model):
     """ Job tittle model """
-    cargo = models.CharField("Nombre del empleado", max_length=255)
+    position = models.CharField("Nombre del cargo", max_length=255)
     enterprise = models.ForeignKey(Enterprise, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.pk
+        return f"{self.pk} - {self.position}"

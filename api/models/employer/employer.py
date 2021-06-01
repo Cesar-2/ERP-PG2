@@ -34,4 +34,4 @@ class Employer(models.Model):
         verbose_name_plural = "Empleados"
 
     def __str__(self):
-        return f"{self.pk} - {self.name} - {self.email}"
+        return f"{self.pk} - {self.name} {self.email}"

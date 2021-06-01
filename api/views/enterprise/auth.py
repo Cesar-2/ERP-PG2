@@ -84,6 +84,7 @@ class AuthApi(APIView):
         return Response({
             "token": token,
             "refresh": refresh,
+            "id": enterprise.pk,
             "name": enterprise.name,
             "modules": [val.names for val in enterprise.module.all()]
         }, status=status.HTTP_201_CREATED)
