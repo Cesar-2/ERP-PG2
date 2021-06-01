@@ -72,5 +72,5 @@ Recurso POST
 
     :status 201: Token creado
     :status 400: Cuerpo con estructura inválida
-    :statys 401: No autorizado
+    :status 401: No autorizado
     :status 404: Empresa no encontrada
