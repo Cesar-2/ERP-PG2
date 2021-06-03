@@ -68,7 +68,7 @@ class EmployerApi(APIView, TokenHandler):
                 "detailed": "No tiene los permisos necesarios"
             }, status=status.HTTP_403_FORBIDDEN)
 
-        # request.data["enterprise"] = enterprise
+        request.data["enterprise"] = enterprise
         serializer = EmployerSerializer(data=request.data)
         if not serializer.is_valid():
             return Response({

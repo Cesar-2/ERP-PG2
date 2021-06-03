@@ -18,8 +18,7 @@ class EmployerSerializer(serializers.ModelSerializer):
         model = Employer
         fields = ["pk", "creation_date", "name", "last_name", "initiation_date",
                   "birthdate", "document", "email", "cellphone", "work_from_home",
-                  "job_tittle", "address", "state", "city", "eps", "enterprise",
-                  "documents"]
+                  "job_tittle", "address", "state", "city", "eps", "enterprise"]
         extra_kwargs = {'password': {'write_only': True}}
 
     def create(self, validated_data):
