@@ -1,4 +1,4 @@
-from api.serializers.enterprise.enterprise import EnterpriseSerializer
+from ...serializers.enterprise.enterprise import EnterpriseSerializer
 import copy
 from rest_framework import serializers
 from rest_framework.validators import UniqueValidator
