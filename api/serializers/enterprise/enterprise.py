@@ -55,3 +55,20 @@ class EnterpriseSerializer(serializers.ModelSerializer):
         enterprise.save()
 
         return enterprise
+
+
+class BasicEnterpriseSerializer(serializers.ModelSerializer):
+    """ Defines enterprise serializer behaviour. """
+    email = serializers.EmailField(
+        validators=[UniqueValidator(queryset=USER.objects.all())]
+    )
+    nit = serializers.CharField(
+        validators=[UniqueValidator(queryset=USER.objects.all())])
+
+    class Meta:
+        """ Defines serializer fields that are being used """
+
+        model = USER
+        fields = [
+            'pk', 'email', 'name', 'nit'
+        ]

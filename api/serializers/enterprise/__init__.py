@@ -1,1 +1,1 @@
-from .enterprise import EnterpriseSerializer
+from .enterprise import EnterpriseSerializer, BasicEnterpriseSerializer

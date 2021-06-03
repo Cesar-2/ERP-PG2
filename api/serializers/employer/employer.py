@@ -1,4 +1,4 @@
-from ...serializers.enterprise.enterprise import EnterpriseSerializer
+from ...serializers.enterprise.enterprise import BasicEnterpriseSerializer
 import copy
 from rest_framework import serializers
 from rest_framework.validators import UniqueValidator
@@ -11,7 +11,7 @@ class EmployerSerializer(serializers.ModelSerializer):
     email = serializers.EmailField(
         validators=[UniqueValidator(queryset=Employer.objects.all())]
     )
-    enterprise = EnterpriseSerializer(read_only=True)
+    enterprise = BasicEnterpriseSerializer(read_only=True)
 
     class Meta:
         """ Defines serializer fields that are being used """
