@@ -62,7 +62,7 @@ class EmployerApi(APIView, TokenHandler):
                 "detailed": "El token es incorrecto o expiro"
             }, status=status.HTTP_401_UNAUTHORIZED)
 
-        if not self.has_permissions([PAYROLL_MODULE], enterprise):
+        if not self.has_permissions([EMPLOYER_MODULE], enterprise):
             return Response({
                 "code": "invalid_request",
                 "detailed": "No tiene los permisos necesarios"

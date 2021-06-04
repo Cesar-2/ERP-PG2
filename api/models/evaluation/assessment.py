@@ -13,6 +13,8 @@ class Assessment(models.Model):
         Employer, on_delete=models.CASCADE, related_name="assessment_employer_evaluator")
     qualification = models.IntegerField("Calificacion")
     creation_date = models.DateField(auto_now_add=True)
+    feedback = models.CharField(
+        "Retroalimentacion", max_length=1000, blank=True)
 
     class Meta:
         """ Sets human readable name """
