@@ -17,6 +17,7 @@ from django.urls import path
 
 from .views.enterprise import AuthApi, EnterpriseApi
 from .views.employer import EmployerApi
+from .views.assessment import AssessmentApi
 
 app_name = 'api'
 
@@ -24,4 +25,5 @@ urlpatterns = [
     path('auth', AuthApi.as_view()),
     path('employer', EmployerApi.as_view()),
     path('enterprise', EnterpriseApi.as_view()),
+    path('assessment', AssessmentApi.as_view()),
 ]
