@@ -33,6 +33,7 @@ Recurso POST
             POST /api/v1/enterprise HTTP/1.1
             Content-Type: application/json
             Authorization: Bearer eydsfgfdhndfjsafdssddfds
+            Range: 0-9
 
             {
                 "name": "Carlos",

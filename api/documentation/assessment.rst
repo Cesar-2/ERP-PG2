@@ -60,3 +60,30 @@ Recurso POST
     :status 400: Parámetros de búsqueda inválidos
     :status 401: El token es incorrecto o expiro
     :status 403: No tiene los permisos necesarios
+
+Recurso get
+-------------
+
+    Retorna una evaluacion de los empleados de una empresa en la plataforma
+
+    * **Ejemplo de petición**
+
+        .. sourcecode:: http
+
+            GET /api/v1/assessment HTTP/1.1
+            Content-Type: application/json
+            Authorization Bearer eyyetrjhhggsdgffsgdhkjg
+            Range: 0-9
+
+    * **Ejemplo de respuesta**
+
+        .. sourcecode:: http
+
+            {
+                "count": 0,
+                "results": []
+            }
+
+    :status 200: Operacion exitosa
+    :status 401: El token es incorrecto o expiro
+    :status 403: No tiene los permisos necesarios
