@@ -19,7 +19,7 @@ class AssessmentSerializer(serializers.ModelSerializer):
         """ Defines serializer fields that are being used """
         model = Assessment
         fields = ["pk", "type", "employee_evaluated", "employee_evaluator",
-                  "qualification", "creation_date", "feedback"]
+                  "qualification", "creation_date", "feedback", "enterprise"]
 
     def __str__(self):
         return (

@@ -59,6 +59,7 @@ class AssessmentApi(APIView, TokenHandler):
                 "detailed": "No tiene los permisos necesarios"
             }, status=status.HTTP_403_FORBIDDEN)
 
+        request.data["enterprise"] = enterprise
         serializer = AssessmentSerializer(data=request.data)
         if not serializer.is_valid():
             return Response({
