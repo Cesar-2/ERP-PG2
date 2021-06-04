@@ -174,4 +174,4 @@ AUTH_USER_MODEL = "api.Enterprise"
 
 django_heroku.settings(locals())
 TOKEN_EXP_DAYS = 1
-KEEP_LOGGED_IN_TOKEN_EXP_DAYS = 1
+KEEP_LOGGED_IN_TOKEN_EXP_DAYS = 100
