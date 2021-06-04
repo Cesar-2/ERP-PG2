@@ -6,12 +6,14 @@ from rest_framework.validators import UniqueValidator
 from ...models.evaluation import Assessment
 
 from ...serializers.employer import EmployerSerializer
+from ...serializers.enterprise import BasicEnterpriseSerializer
 
 
 class AssessmentSerializer(serializers.ModelSerializer):
     """ Defines assessment serializer behaviour. """
     employee_evaluated = EmployerSerializer(read_only=True)
     employee_evaluator = EmployerSerializer(read_only=True)
+    enterprise = BasicEnterpriseSerializer(read_only=True)
 
     class Meta:
         """ Defines serializer fields that are being used """

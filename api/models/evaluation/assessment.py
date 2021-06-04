@@ -2,6 +2,7 @@
 
 from django.db import models
 from ...models.employer import Employer
+from ...models.enterprise import Enterprise
 
 
 class Assessment(models.Model):
@@ -15,6 +16,8 @@ class Assessment(models.Model):
     creation_date = models.DateField(auto_now_add=True)
     feedback = models.CharField(
         "Retroalimentacion", max_length=1000, blank=True)
+    enterprise = models.ForeignKey(
+        Enterprise, on_delete=models.CASCADE, null=True)
 
     class Meta:
         """ Sets human readable name """
