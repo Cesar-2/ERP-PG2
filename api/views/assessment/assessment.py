@@ -8,6 +8,8 @@ from rest_framework import status
 
 from ...serializers.assessment import AssessmentSerializer
 
+from ...models.evaluation import Assessment
+
 from ...helpers.paginator import paginate_content
 from ...helpers.token import TokenHandler
 from ...helpers.modules_names import ASSESSMENT_MODULE
@@ -70,3 +72,41 @@ class AssessmentApi(APIView, TokenHandler):
         return Response({
             "inserted": assessment.pk,
         }, status=status.HTTP_201_CREATED)
+
+    @paginate_content()
+    def get(self, request):
+        """ Retrieves assessment instance.
+
+        Parameters
+        ----------
+
+        request (dict)
+            Contains http transaction information.
+
+        Returns
+        -------
+            Response (JSON, int)
+                Body response and status code.
+
+        """
+        payload, enterprise = self.get_payload(request)
+        if not payload:
+            return Response({
+                "code": "unauthorized",
+                "detailed": "El token es incorrecto o expiro"
+            }, status=status.HTTP_401_UNAUTHORIZED)
+
+        if not self.has_permissions([ASSESSMENT_MODULE], enterprise):
+            return Response({
+                "code": "invalid_request",
+                "detailed": "No tiene los permisos necesarios"
+            }, status=status.HTTP_403_FORBIDDEN)
+
+        assessment = Assessment.objects.filter(enterprise=enterprise.pk)
+
+        return Response({
+            "count": assessment.count(),
+            "results": AssessmentSerializer(
+                employer[self.pagination_start:
+                         self.pagination_end + 1], many=True).data
+        }, status=status.HTTP_200_OK)

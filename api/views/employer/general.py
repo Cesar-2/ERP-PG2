@@ -85,6 +85,20 @@ class EmployerApi(APIView, TokenHandler):
 
     @paginate_content()
     def get(self, request):
+        """ Retrieves employer instance.
+
+        Parameters
+        ----------
+
+        request (dict)
+            Contains http transaction information.
+
+        Returns
+        -------
+            Response (JSON, int)
+                Body response and status code.
+
+        """
         payload, enterprise = self.get_payload(request)
         if not payload:
             return Response({
