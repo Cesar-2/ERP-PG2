@@ -107,6 +107,6 @@ class AssessmentApi(APIView, TokenHandler):
         return Response({
             "count": assessment.count(),
             "results": AssessmentSerializer(
-                employer[self.pagination_start:
-                         self.pagination_end + 1], many=True).data
+                assessment[self.pagination_start:
+                           self.pagination_end + 1], many=True).data
         }, status=status.HTTP_200_OK)
