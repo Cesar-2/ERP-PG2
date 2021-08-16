@@ -5,9 +5,9 @@ from django.contrib.auth.hashers import make_password
 from rest_framework import serializers
 from rest_framework.validators import UniqueValidator
 
-from ...models.enterprise.module import Module
-from ...serializers.enterprise.module import ModuleSerializer
-from ...services.Enterprise_register import EnterpriseModules
+from ...models import Module
+from ...serializers import ModuleSerializer
+from ...services import EnterpriseModules
 
 USER = get_user_model()
 
