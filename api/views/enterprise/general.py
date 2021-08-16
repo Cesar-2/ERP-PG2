@@ -1,6 +1,4 @@
 """ Contains User endpoint definition """
-from api.models import enterprise
-from api.models.enterprise.enterprise import Enterprise
 from cerberus import Validator
 from datetime import datetime
 
@@ -11,11 +9,12 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 
-from ...helpers.modules_names import (
-    ASSESSMENT_MODULE, PAYROLL_MODULE, EMPLOYER_MODULE, REPORT_MODULE)
-from ...helpers.token import TokenHandler
-from ...helpers.paginator import paginate_content
-from ...serializers.enterprise import EnterpriseSerializer
+from ...helpers import (
+    ASSESSMENT_MODULE, PAYROLL_MODULE, EMPLOYER_MODULE, REPORT_MODULE,
+    TokenHandler, paginate_content
+)
+from ...serializers import EnterpriseSerializer
+from ...models import Enterprise
 
 
 class EnterpriseApi(APIView, TokenHandler):
