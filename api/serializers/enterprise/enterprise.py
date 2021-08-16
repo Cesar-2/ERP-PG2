@@ -6,8 +6,8 @@ from rest_framework import serializers
 from rest_framework.validators import UniqueValidator
 
 from ...models import Module
-from ...serializers import ModuleSerializer
-from ...services import EnterpriseModules
+from ...serializers.enterprise.module import ModuleSerializer
+from ...services.Enterprise_register import EnterpriseModules
 
 USER = get_user_model()
 
