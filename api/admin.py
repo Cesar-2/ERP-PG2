@@ -1,6 +1,6 @@
-from .models.enterprise import Enterprise, Module
-from .models.evaluation import Assessment, TypeAssessment
-from .models.employer import JobTittle, Employer, File
+from .models import (
+    Enterprise, Module, Assessment, TypeAssessment, JobTittle, Employer, File
+)
 from django.contrib import admin
 
 # Register your models here.
