@@ -117,7 +117,6 @@ class EmployerApi(APIView, TokenHandler):
 
         return Response({
             "count": employer.count(),
-            "results": EmployerSerializer(
-                employer[self.pagination_start:
-                         self.pagination_end + 1], many=True).data
+            "results": EmployerSerializer(employer, many=True).data[
+                self.pagination_start:self.pagination_end + 1]
         }, status=status.HTTP_200_OK)
