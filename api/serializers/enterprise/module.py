@@ -1,7 +1,7 @@
 """ Contains Module serializer definition """
 
 from rest_framework import serializers
-from ...models.enterprise.module import Module
+from ...models import Module
 
 
 class ModuleSerializer(serializers.ModelSerializer):
