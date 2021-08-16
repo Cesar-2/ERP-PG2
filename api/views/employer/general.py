@@ -6,12 +6,11 @@ from ...serializers.employer import EmployerSerializer
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from ...models.employer import Employer
-from ...models.enterprise import Enterprise
+from ...models import Employer, Enterprise
 
-from ...helpers.paginator import paginate_content
-from ...helpers.token import TokenHandler
-from ...helpers.modules_names import PAYROLL_MODULE, EMPLOYER_MODULE
+from ...helpers import(
+    paginate_content, TokenHandler, PAYROLL_MODULE, EMPLOYER_MODULE
+)
 
 
 class EmployerApi(APIView, TokenHandler):
